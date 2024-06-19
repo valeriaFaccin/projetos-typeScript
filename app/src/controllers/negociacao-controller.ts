@@ -12,16 +12,13 @@ export class NegociacaoController {
     private negociacoesView = new NegociacoesView('#negociacoesView', true);
     private mensagemView = new MensagemView('#mensagemView');
 
-    //constrói o objeto de controle de Negociação
     constructor() {
-        //seleciona os elementos do html que serão preenchidos com o valor da negociação
         this.inputData = <HTMLInputElement> document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
         this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
 
-    //método para adicionar nova negociação
     public adiciona(): void {
         const negociacao = Negociacao.criaDe(
             this.inputData.value,
@@ -43,9 +40,7 @@ export class NegociacaoController {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
     }
 
-    //método para limpar o formulário para uma nova negociação
     private limpaFormulario(): void {
-        //altera os campos dos inputs para valor vazio
         this.inputData.value = '';
         this.inputQuantidade.value = '';
         this.inputValor.value = '';

@@ -1,13 +1,11 @@
 export class Negociacao{
 
-    //construtor do objeto Negociação, contendo data, quantidade e valor
     constructor (
         private readonly _data: Date, 
         public readonly quantidade: number, 
         public readonly valor: number
     ) {}
 
-    //método get data
     get data(): Date{
         //cria uma cópia da data inserida
         const data = new Date(this._data.getTime())
@@ -15,7 +13,6 @@ export class Negociacao{
         return data;
     }
 
-    //método get volume
     get volume(): number {
         return this.quantidade * this.valor;
     }
