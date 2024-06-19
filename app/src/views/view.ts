@@ -15,8 +15,8 @@ export abstract class View<T> {
     }
 
     //aplicados de baixo para o topo
-    @logarTempoExec(true)
-    @inspect
+    //@logarTempoExec(true)
+    //@inspect
     //renderiza a tabela construida no template, no innerHTML do elemento que queremos apresentar a tabela na tela
     public update(model: T): void {
         let template = this.template(model);
