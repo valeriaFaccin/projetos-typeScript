@@ -12,3 +12,4 @@ export function domInjector(selector) {
         Object.defineProperty(target, propertyKey, { get: abobrinha });
     };
 }
+//# sourceMappingURL=domInjector.js.map
