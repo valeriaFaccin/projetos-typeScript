@@ -10,13 +10,14 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class NegociacaoController {
+
     @domInjector('#data')
     private inputData: HTMLInputElement;
     @domInjector('#quantidade')
     private inputQuantidade: HTMLInputElement;
     @domInjector('#valor')
-
     private inputValor: HTMLInputElement;
+
     private negociacoes = new Negociacoes;
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
@@ -49,6 +50,12 @@ export class NegociacaoController {
 
     public importarDados(): void {
         this.negociacoesService.obterNegociacoes()
+        .then(negociacoesHoje => {
+            return negociacoesHoje.filter(negociacoesHoje => {
+                return !this.negociacoes.lista()
+                .some(negociacao => negociacao.equalDate(negociacoesHoje));
+            });
+        })
         .then(negociacoesHoje => {
             for(let negociacao of negociacoesHoje){
                 this.negociacoes.adiciona(negociacao);

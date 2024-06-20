@@ -11,4 +11,7 @@ export class Negociacoes {
     imprimeTexto() {
         return JSON.stringify(this.negociacoes, null, 2);
     }
+    equalDate(negociacoes) {
+        return JSON.stringify(this.negociacoes) === JSON.stringify(negociacoes.lista());
+    }
 }
