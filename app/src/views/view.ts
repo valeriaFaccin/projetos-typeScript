@@ -1,11 +1,8 @@
-import { inspect } from "../Decorators/inspect.js";
-import { logarTempoExec } from "../Decorators/logar-tempo-de-exec.js";
-
 export abstract class View<T> {
     protected element: HTMLElement;
 
     //construtor do Objeto de Negociações para a tela, criando a instância do elemento através do elemento HTML selecionado
-    constructor(selector: string){
+    constructor(selector: string) {
         const element = document.querySelector(selector);
         if(element){
             this.element = element as HTMLElement;

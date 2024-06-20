@@ -1,4 +1,4 @@
-export function inspect(
+export function inspect (
     target: any,
     propertyKey: string,
     descriptor: PropertyDescriptor

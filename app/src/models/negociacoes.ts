@@ -5,12 +5,16 @@ export class Negociacoes {
                         //Negociacao[]
     private negociacoes: Array<Negociacao> = [];
 
-    adiciona(negociacao: Negociacao) {
+    public  adiciona(negociacao: Negociacao): void {
         this.negociacoes.push(negociacao);
     }
 
     //métodp para retornar a lista de Negociações criadas, apenas para leitura, sem fornecer nenhum método de alteração dessa lista
-    lista(): ReadonlyArray<Negociacao> {
+    public lista(): ReadonlyArray<Negociacao> {
         return this.negociacoes;
+    }
+
+    public imprimir(): string {
+        return JSON.stringify(this.negociacoes, null, 2);
     }
 }

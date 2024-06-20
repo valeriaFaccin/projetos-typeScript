@@ -41,11 +41,13 @@ export class NegociacaoController {
         }
 
         this.negociacoes.adiciona(negociacao);
+        console.log(negociacao.imprimir());
+        console.log(this.negociacoes.imprimir());
         this.limpaFormulario();
         this.atualizaView();
     }
 
-    public importarDados() : void {
+    public importarDados(): void {
         this.negociacoesService.obterNegociacoes()
         .then(negociacoesHoje => {
             for(let negociacao of negociacoesHoje){
@@ -55,7 +57,7 @@ export class NegociacaoController {
         })
     }
 
-    private confereDiaUtil(data: Date) {
+    private confereDiaUtil(data: Date): boolean {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
     }
 
@@ -66,7 +68,7 @@ export class NegociacaoController {
         this.inputData.focus();
     }
 
-    private atualizaView() : void{
+    private atualizaView(): void {
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update('Negociação adicionada com sucesso!');
     }

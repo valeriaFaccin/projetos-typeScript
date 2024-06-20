@@ -2,7 +2,7 @@ import { escape } from "../Decorators/escape.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { View } from "./view.js";
 
-export class NegociacoesView extends View<Negociacoes>{
+export class NegociacoesView extends View<Negociacoes> {
 
     @escape
     //declara o template da view, ou seja, a tabela que será apresentada na tela
@@ -31,7 +31,7 @@ export class NegociacoesView extends View<Negociacoes>{
         `;
     }
 
-    private formataData(data: Date): string{
+    private formataData(data: Date): string {
         return new Intl.DateTimeFormat().format(data);
     }
 }

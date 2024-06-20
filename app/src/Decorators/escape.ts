@@ -1,4 +1,4 @@
-export function escape(
+export function escape (
     target: any,
     propertyKey: string,
     descriptor: PropertyDescriptor

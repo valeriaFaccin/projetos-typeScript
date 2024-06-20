@@ -28,6 +28,8 @@ export class NegociacaoController {
             return;
         }
         this.negociacoes.adiciona(negociacao);
+        console.log(negociacao.imprimir());
+        console.log(this.negociacoes.imprimir());
         this.limpaFormulario();
         this.atualizaView();
     }
