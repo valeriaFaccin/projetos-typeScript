@@ -8,7 +8,7 @@ export class Negociacoes {
     lista() {
         return this.negociacoes;
     }
-    imprimir() {
+    imprimeTexto() {
         return JSON.stringify(this.negociacoes, null, 2);
     }
 }

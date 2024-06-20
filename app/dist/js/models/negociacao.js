@@ -18,7 +18,7 @@ export class Negociacao {
     get volume() {
         return this.quantidade * this.valor;
     }
-    imprimir() {
+    imprimeTexto() {
         return `
             Data: ${this.data}
             Quantidade: ${this.quantidade}
