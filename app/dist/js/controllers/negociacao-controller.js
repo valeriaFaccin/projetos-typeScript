@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { domInjector } from "../Decorators/domInjector.js";
 import { inspect } from "../Decorators/inspect.js";
 import { logarTempoExec } from "../Decorators/logar-tempo-de-exec.js";
+import { NegociacoesService } from "../Service/negociacoes-service.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -17,6 +18,7 @@ export class NegociacaoController {
         this.negociacoes = new Negociacoes;
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
+        this.negociacoesService = new NegociacoesService();
         this.negociacoesView.update(this.negociacoes);
     }
     adiciona() {
@@ -30,11 +32,8 @@ export class NegociacaoController {
         this.atualizaView();
     }
     importarDados() {
-        fetch('http://localhost:8080/dados').then(res => res.json()).then((dados) => {
-            return dados.map(dado => {
-                return new Negociacao(new Date(), dado.vezes, dado.montante);
-            });
-        }).then(negociacoesHoje => {
+        this.negociacoesService.obterNegociacoes()
+            .then(negociacoesHoje => {
             for (let negociacao of negociacoesHoje) {
                 this.negociacoes.adiciona(negociacao);
             }
