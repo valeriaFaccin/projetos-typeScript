@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "app/dist/js",
+        "outDir": "./projeto-negociacoes/app/dist/js",
         "target": "ES6",
         "noEmitOnError": true,
         "noImplicitAny": true,
@@ -9,5 +9,5 @@
         "experimentalDecorators": true,
         "sourceMap": true
     },
-    "include": ["app/src/**/*"]
+    "include": ["./projeto-negociacoes/app/src/**/*"]
 }
