@@ -1,19 +1,19 @@
-var saldo = 3000;
-var elementoSaldo = document.querySelector('.saldo-valor .valor');
+let saldo = 3000;
+const elementoSaldo = document.querySelector('.saldo-valor .valor');
 elementoSaldo.textContent = saldo.toString();
-var elementoFormulario = document.querySelector('.block-nova-transacao form');
+const elementoFormulario = document.querySelector('.block-nova-transacao form');
 elementoFormulario.addEventListener('submit', function (event) {
     event.preventDefault();
     if (!elementoFormulario.checkValidity()) {
         alert('Por favor, preecha todos os campos da trasação');
         return;
     }
-    var inputTransacao = document.querySelector('#tipoTransacao');
-    var inputValor = document.querySelector('#valor');
-    var inputData = document.querySelector('#data');
-    var transacao = inputTransacao.value;
-    var valor = inputValor.valueAsNumber;
-    var data = new Date(inputData.value);
+    const inputTransacao = document.querySelector('#tipoTransacao');
+    const inputValor = document.querySelector('#valor');
+    const inputData = document.querySelector('#data');
+    let transacao = inputTransacao.value;
+    let valor = inputValor.valueAsNumber;
+    let data = new Date(inputData.value);
     if (transacao === 'Depósito') {
         saldo += valor;
     }
@@ -25,7 +25,7 @@ elementoFormulario.addEventListener('submit', function (event) {
         return;
     }
     elementoSaldo.textContent = saldo.toString();
-    var objetoTransacao = {
+    const objetoTransacao = {
         tipoTransacao: transacao,
         valorTransacao: valor,
         dataTransacao: data
