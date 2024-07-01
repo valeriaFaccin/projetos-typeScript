@@ -3,4 +3,4 @@ const elementoSaldo = document.querySelector('.saldo-valor .valor');
 const elementoData = document.querySelector('.block-saldo time');
 elementoSaldo.textContent = formataMoeda(saldo);
 const dataAcesso = new Date();
-elementoData.textContent = formataData(dataAcesso);
+elementoData.textContent = formataData(dataAcesso, formatoData.SEMANA_PADRAO);
