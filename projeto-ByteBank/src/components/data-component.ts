@@ -9,7 +9,7 @@ function renderizarData(): void {
 }
 
 const dataComponent = {
-    atualizar: function () {
+    atualizar() {
         renderizarData();
     },
 };
