@@ -2,6 +2,7 @@ import { tipoTransacao } from "../types/tipoTransacao.js";
 import { transacao } from "../types/transacao.js";
 import Conta from "../types/Conta.js";
 import saldoComponent from "./saldo-component.js";
+import dataComponent from "./data-component.js";
 
 const elementoFormulario = document.querySelector('.block-nova-transacao form') as HTMLFormElement;
 elementoFormulario.addEventListener('submit', function(event){
