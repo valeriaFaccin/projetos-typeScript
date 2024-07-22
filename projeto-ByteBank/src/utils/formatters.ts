@@ -1,7 +1,7 @@
 import { formatoData } from "../types/formatoData.js";
 
 export function formataMoeda(valor: number): string {
-    return valor.toLocaleString('pt-br', {currency: 'BRL', style: 'currency'});
+    return valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
 }
 
 export function formataData(data: Date, formato: formatoData = formatoData.PADRAO): string {

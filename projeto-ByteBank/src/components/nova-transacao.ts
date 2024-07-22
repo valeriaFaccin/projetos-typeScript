@@ -13,13 +13,13 @@ elementoFormulario.addEventListener('submit', function(event){
             return;
         }
 
-        const inputTransacao = document.querySelector('#tipoTransacao') as HTMLSelectElement;
-        const inputValor = document.querySelector('#valor') as HTMLInputElement;
-        const inputData = document.querySelector('#data') as HTMLInputElement;
+        const inputTransacao = elementoFormulario.querySelector('#tipoTransacao') as HTMLSelectElement;
+        const inputValor = elementoFormulario.querySelector('#valor') as HTMLInputElement;
+        const inputData = elementoFormulario.querySelector('#data') as HTMLInputElement;
 
         let transacao: tipoTransacao = inputTransacao.value as tipoTransacao;
         let valor: number = inputValor.valueAsNumber;
-        let data: Date = new Date(inputData.value + '00:00:00');
+        let data: Date = new Date(inputData.value + ' 00:00:00');
 
         const objetoTransacao: transacao = {
             tipoTransacao: transacao,

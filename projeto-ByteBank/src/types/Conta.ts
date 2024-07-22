@@ -3,17 +3,19 @@ import { tipoTransacao } from "./tipoTransacao.js";
 import { grupoTransacao } from "./grupoTransacao.js";
 
 let saldo: number = JSON.parse(localStorage.getItem('saldo')) || 0;
-const transacoes: transacao[] = JSON.parse(localStorage.getItem('transações'), (key: string, valor: number) => {
+const transacoes: transacao[] = JSON.parse(localStorage.getItem('transações'), (key: string, value: string) => {
     if(key === 'data') {
-        return new Date(valor);
+        return new Date(value);
     }
-    return valor;
+    return value;
 }) || [];
 
 function debitar(valor: number): void {
-    if(valor < 0){
+    if (valor < 0) {
         throw new Error('Valor Inválido');
-    } else if (valor > saldo) {
+    }
+
+    if (valor > saldo) {
         throw new Error('Saldo Insuficiente');
     }
 
@@ -22,7 +24,7 @@ function debitar(valor: number): void {
 }
 
 function depositar(valor: number): void {
-    if(valor < 0) {
+    if (valor <= 0) {
         throw new Error('Valor Inválido');
     }
 
@@ -55,7 +57,7 @@ const Conta = {
                 labelAtualGrupoTransacao = labelGrupoTransacao;
                 gruposTransacoes.push({
                     label: labelGrupoTransacao,
-                    transacoes: [],
+                    transacoes: []
                 });
             }
             gruposTransacoes.at(-1).transacoes.push(t);
@@ -67,7 +69,7 @@ const Conta = {
     registrarTransacao(novaTransacao: transacao): void {
         if(novaTransacao.tipoTransacao === tipoTransacao.DEPOSITO){
             depositar(novaTransacao.valor);
-        } else if (novaTransacao.tipoTransacao === tipoTransacao.TRANSFERENCIA || novaTransacao.tipoTransacao === tipoTransacao.PAGAMENTO_BOLETO) {
+        } else if (novaTransacao.tipoTransacao === tipoTransacao.TRANSFERENCIA || novaTransacao.tipoTransacao == tipoTransacao.PAGAMENTO_BOLETO) {
             debitar(novaTransacao.valor);
             novaTransacao.valor *= -1;
         } else {
