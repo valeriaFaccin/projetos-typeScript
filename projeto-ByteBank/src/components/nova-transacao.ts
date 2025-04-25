@@ -3,6 +3,7 @@ import { transacao } from "../types/transacao.js";
 import Conta from "../types/Conta.js";
 import saldoComponent from "./saldo-component.js";
 import extratoComponent from "./extrato-component.js";
+import dataComponent from "./data-component.js";
 
 const elementoFormulario = document.querySelector('.block-nova-transacao form') as HTMLFormElement;
 elementoFormulario.addEventListener('submit', function(event){
@@ -10,6 +11,11 @@ elementoFormulario.addEventListener('submit', function(event){
         event.preventDefault();
         if(!elementoFormulario.checkValidity()){
             alert('Por favor, preecha todos os campos da trasação');
+            return;
+        }
+
+        if(!elementoFormulario.checkValidity()) {
+            alert('Preencha os dados necessários');
             return;
         }
 
@@ -28,9 +34,11 @@ elementoFormulario.addEventListener('submit', function(event){
         }
 
         Conta.registrarTransacao(objetoTransacao);
-        saldoComponent.atualizar();
+        saldoComponent.atualizarSaldo();
+        dataComponent.atualizarData();
         extratoComponent.atualiza();
         elementoFormulario.reset();
+
     } catch (error) {
         alert(error.message);
     }
